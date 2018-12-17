@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignupViewController.swift
 //  Local
 //
 //  Created by Jack Chen on 12/17/18.
@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignupViewController: UIViewController{
+    
     
     
     
