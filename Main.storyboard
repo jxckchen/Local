@@ -36,12 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_20181104_191140" translatesAutoresizingMaskIntoConstraints="NO" id="JnL-F3-sWl">
-                                <rect key="frame" x="-242" y="20" width="420" height="725"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="420" id="RAi-05-YRT"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l o c a l" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fi-PO-YOZ">
                                 <rect key="frame" x="121.5" y="146" width="132" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="40"/>
@@ -81,12 +75,9 @@
                             <constraint firstItem="nXD-Ye-nAA" firstAttribute="leading" secondItem="G8T-nd-LhD" secondAttribute="leadingMargin" constant="73" id="3sG-dl-fBs"/>
                             <constraint firstItem="Fv3-iE-sQa" firstAttribute="leading" secondItem="G8T-nd-LhD" secondAttribute="leadingMargin" constant="-10" id="I8M-sc-ZQt"/>
                             <constraint firstItem="7fi-PO-YOZ" firstAttribute="top" secondItem="YH1-70-ilK" secondAttribute="bottom" constant="126" id="Qti-j7-vum"/>
-                            <constraint firstItem="JnL-F3-sWl" firstAttribute="leading" secondItem="G8T-nd-LhD" secondAttribute="leading" constant="-242" id="U4O-xQ-2dd"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="JnL-F3-sWl" secondAttribute="bottom" constant="-78" id="XlW-Xq-OTd"/>
                             <constraint firstItem="Fv3-iE-sQa" firstAttribute="top" secondItem="YH1-70-ilK" secondAttribute="bottom" constant="607" id="YWW-wf-Lvj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aX9-nP-7Yl" secondAttribute="trailing" constant="-12" id="b1u-sd-eyp"/>
                             <constraint firstItem="nXD-Ye-nAA" firstAttribute="centerX" secondItem="G8T-nd-LhD" secondAttribute="centerX" id="c1e-iG-3L1"/>
-                            <constraint firstItem="JnL-F3-sWl" firstAttribute="top" secondItem="YH1-70-ilK" secondAttribute="bottom" id="ddX-5F-nHV"/>
                             <constraint firstItem="Fv3-iE-sQa" firstAttribute="baseline" secondItem="aX9-nP-7Yl" secondAttribute="baseline" id="jVN-oa-KF3"/>
                             <constraint firstItem="nXD-Ye-nAA" firstAttribute="top" secondItem="7fi-PO-YOZ" secondAttribute="bottom" constant="8" symbolic="YES" id="mm5-el-ZN8"/>
                         </constraints>
