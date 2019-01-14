@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
         self.setCustomBackgroundImage()
         loginButton.layer.cornerRadius = 5
         loginButton.layer.borderWidth = 1
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
     }
     
     
