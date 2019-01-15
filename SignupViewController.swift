@@ -23,9 +23,19 @@ class SignupViewController: UIViewController{
         self.setCustomBackgroundImage()
         signupButton.layer.cornerRadius = 5
         signupButton.layer.borderWidth = 1
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "confirm password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        emailTextField.layer.borderWidth = 1
+        emailTextField.layer.cornerRadius = 5
+        emailTextField.layer.borderColor = UIColor.white.cgColor
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.cornerRadius = 5
+        passwordTextField.layer.borderColor = UIColor.white.cgColor
+        confirmPasswordTextField.layer.borderWidth = 1
+        confirmPasswordTextField.layer.cornerRadius = 5
+        confirmPasswordTextField.layer.borderColor = UIColor.white.cgColor
+        
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "confirm password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     @IBAction func signUpAction(_ sender: Any) {
