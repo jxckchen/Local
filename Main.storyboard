@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="loginButton" destination="Fv3-iE-sQa" id="veB-dn-VCx"/>
                         <outlet property="signupButton" destination="aX9-nP-7Yl" id="O9A-Z5-cQq"/>
+                        <segue destination="rU8-Ii-zMj" kind="show" identifier="alreadyLoggedIn" id="YDr-hC-P3M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9xa-fI-I9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -209,6 +210,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icons8-customer-30" id="J1h-J5-SIf">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-20"/>
@@ -221,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="3726" y="779"/>
         </scene>
-        <!--View Controller-->
+        <!--Room List Controller-->
         <scene sceneID="Ic0-bR-Hw1">
             <objects>
-                <viewController id="WYt-5T-cya" sceneMemberID="viewController">
+                <viewController id="WYt-5T-cya" customClass="RoomListController" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nIz-Bw-saG"/>
                         <viewControllerLayoutGuide type="bottom" id="9BT-Bt-3kp"/>
@@ -234,7 +236,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="3IX-rK-waA"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-chat-room-30" id="3IX-rK-waA"/>
+                    <connections>
+                        <outlet property="barThing" destination="3IX-rK-waA" id="Yig-Qa-K2J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8q-gM-VP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -357,11 +362,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-chat-room-30" width="22.5" height="22.5"/>
         <image name="icons8-customer-30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SaJ-0G-aLH"/>
-        <segue reference="0Ib-v9-oY3"/>
-        <segue reference="y0C-pO-438"/>
+        <segue reference="EW2-c2-zxz"/>
+        <segue reference="YDr-hC-P3M"/>
+        <segue reference="Pcj-DT-wdT"/>
     </inferredMetricsTieBreakers>
 </document>
