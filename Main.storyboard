@@ -210,13 +210,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icons8-customer-30" id="J1h-J5-SIf"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-customer-30" id="J1h-J5-SIf">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-20"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="barThing" destination="J1h-J5-SIf" id="LiK-aT-wcr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVD-m1-LaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3726" y="779"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="Ic0-bR-Hw1">
             <objects>
                 <viewController id="WYt-5T-cya" sceneMemberID="viewController">
@@ -229,7 +234,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="3IX-rK-waA"/>
+                    <tabBarItem key="tabBarItem" title="" id="3IX-rK-waA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8q-gM-VP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -243,6 +248,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="WYt-5T-cya" kind="relationship" relationship="viewControllers" id="jSx-E0-zoO"/>
