@@ -197,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="1724" y="779"/>
         </scene>
-        <!--Profile-->
+        <!--Home View Controller-->
         <scene sceneID="2ig-Kv-lfG">
             <objects>
                 <viewController id="4St-H5-d28" customClass="HomeViewController" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
@@ -210,7 +210,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="J1h-J5-SIf"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-customer-30" id="J1h-J5-SIf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVD-m1-LaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -346,6 +346,9 @@
             <point key="canvasLocation" x="1724" y="-90"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-customer-30" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SaJ-0G-aLH"/>
         <segue reference="0Ib-v9-oY3"/>
