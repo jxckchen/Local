@@ -198,10 +198,10 @@
             </objects>
             <point key="canvasLocation" x="1724" y="779"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Profile-->
         <scene sceneID="2ig-Kv-lfG">
             <objects>
-                <viewController id="4St-H5-d28" customClass="HomeViewController" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="4St-H5-d28" customClass="HomeViewController" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JIN-Nh-xQc"/>
                         <viewControllerLayoutGuide type="bottom" id="eGD-53-2JO"/>
@@ -209,6 +209,40 @@
                     <view key="view" contentMode="scaleToFill" id="p6v-dg-0hC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-customer-30" translatesAutoresizingMaskIntoConstraints="NO" id="lwt-2D-JCr">
+                                <rect key="frame" x="67" y="127" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loO-Se-e3S">
+                                <rect key="frame" x="287" y="20" width="79" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-th-mau">
+                                <rect key="frame" x="166" y="345" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGr-fV-ZqO">
+                                <rect key="frame" x="166" y="477" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1E-EQ-1Ne">
+                                <rect key="frame" x="16" y="41" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -217,16 +251,55 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="barThing" destination="J1h-J5-SIf" id="LiK-aT-wcr"/>
+                        <outlet property="profileImage" destination="lwt-2D-JCr" id="0cs-jV-dGx"/>
+                        <segue destination="AYP-sR-U70" kind="show" id="aaC-KH-3eU"/>
+                        <segue destination="xUc-pV-PfM" kind="show" id="OCd-O6-RLU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVD-m1-LaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3726" y="779"/>
+            <point key="canvasLocation" x="3725.5999999999999" y="778.56071964017997"/>
         </scene>
-        <!--Room List Controller-->
+        <!--SettingsViewController-->
+        <scene sceneID="YZe-at-XC1">
+            <objects>
+                <viewController title="SettingsViewController" id="xUc-pV-PfM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OBK-0b-rT4"/>
+                        <viewControllerLayoutGuide type="bottom" id="xcI-NS-q1J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hUG-fm-0tz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uP2-fc-kGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4741" y="774"/>
+        </scene>
+        <!--EditProfileViewController-->
+        <scene sceneID="L3b-XU-Tbp">
+            <objects>
+                <viewController title="EditProfileViewController" id="AYP-sR-U70" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sMU-C7-VRI"/>
+                        <viewControllerLayoutGuide type="bottom" id="cK9-4L-Z2E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="byt-Xv-Xng">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YCL-ry-XOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4740" y="1627"/>
+        </scene>
+        <!--RoomListController-->
         <scene sceneID="Ic0-bR-Hw1">
             <objects>
-                <viewController id="WYt-5T-cya" customClass="RoomListController" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="RoomListController" id="WYt-5T-cya" customClass="RoomListController" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nIz-Bw-saG"/>
                         <viewControllerLayoutGuide type="bottom" id="9BT-Bt-3kp"/>
@@ -239,11 +312,73 @@
                     <tabBarItem key="tabBarItem" title="" image="icons8-chat-room-30" id="3IX-rK-waA"/>
                     <connections>
                         <outlet property="barThing" destination="3IX-rK-waA" id="Yig-Qa-K2J"/>
+                        <segue destination="95M-ak-gsO" kind="show" id="YTo-N3-ScI"/>
+                        <segue destination="ClU-q7-7Yn" kind="show" id="V1X-OJ-i18"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8q-gM-VP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3727" y="-90"/>
+        </scene>
+        <!--NewRoomViewController-->
+        <scene sceneID="1oq-Dy-fp7">
+            <objects>
+                <viewController title="NewRoomViewController" id="95M-ak-gsO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WnK-SV-OXq"/>
+                        <viewControllerLayoutGuide type="bottom" id="nj2-25-j3O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1L3-ex-d2i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <segue destination="ClU-q7-7Yn" kind="show" id="qHO-1Z-nlI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zi6-DN-sm3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4766" y="-90"/>
+        </scene>
+        <!--ChatViewController-->
+        <scene sceneID="VFA-jv-02Q">
+            <objects>
+                <viewController title="ChatViewController" id="ClU-q7-7Yn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eO0-0p-123"/>
+                        <viewControllerLayoutGuide type="bottom" id="HtW-CM-yFk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EcV-6W-QUg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <segue destination="ctZ-Yb-MZM" kind="show" id="Sog-mA-gks"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HFu-Nh-F0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4766" y="-903"/>
+        </scene>
+        <!--ChatInfoViewController-->
+        <scene sceneID="1fj-ap-Waf">
+            <objects>
+                <viewController title="ChatInfoViewController" id="ctZ-Yb-MZM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wZ4-yi-FlF"/>
+                        <viewControllerLayoutGuide type="bottom" id="xom-Qo-qpD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WwD-92-QX1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eya-FZ-uhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5696" y="-908"/>
         </scene>
         <!--HomeViewController-->
         <scene sceneID="N7g-QZ-J4u">
@@ -366,8 +501,9 @@
         <image name="icons8-customer-30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EW2-c2-zxz"/>
-        <segue reference="YDr-hC-P3M"/>
+        <segue reference="SaJ-0G-aLH"/>
+        <segue reference="VPM-wj-rJa"/>
+        <segue reference="qHO-1Z-nlI"/>
         <segue reference="Pcj-DT-wdT"/>
     </inferredMetricsTieBreakers>
 </document>
