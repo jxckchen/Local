@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class HomeViewController: UITabBarController{
     
     @IBOutlet weak var barThing: UITabBarItem!
     @IBOutlet weak var profileImage: UIImageView!
     let anyImage:UIImage = UIImage(named: "icons8-customer-30")!
+    @IBOutlet weak var toEditProfileButton: UIButton!
     
     override func viewDidLoad() {
         barThing.title = nil
@@ -23,5 +25,8 @@ class HomeViewController: UITabBarController{
 //        profileImage.maskCircle(anyImage: anyImage.self)
     }
     
+    @IBAction func toEditProfile(_ sender: Any) {
+        performSegue(withIdentifier: "toEditViewControllerViewController", sender: self)
+    }
     
 }
