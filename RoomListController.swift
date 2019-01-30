@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RoomListController: UITabBarController {
+class RoomListController: UIViewController {
     
     @IBOutlet weak var barThing: UITabBarItem!
     override func viewDidLoad() {

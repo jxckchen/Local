@@ -226,59 +226,23 @@
                         <viewControllerLayoutGuide type="top" id="JIN-Nh-xQc"/>
                         <viewControllerLayoutGuide type="bottom" id="eGD-53-2JO"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="p6v-dg-0hC">
+                    <view key="view" contentMode="scaleAspectFit" id="p6v-dg-0hC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-customer-30" translatesAutoresizingMaskIntoConstraints="NO" id="lwt-2D-JCr">
-                                <rect key="frame" x="67" y="127" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDR-D1-Px8">
+                                <rect key="frame" x="164" y="262" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loO-Se-e3S">
-                                <rect key="frame" x="322" y="28" width="37" height="37"/>
-                                <state key="normal" image="icons8-settings-filled-50"/>
+                                <state key="normal" title="Button"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGr-fV-ZqO">
-                                <rect key="frame" x="116" y="263" width="143" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1E-EQ-1Ne">
-                                <rect key="frame" x="16" y="41" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="toEditProfile:" destination="4St-H5-d28" eventType="touchUpInside" id="Hvw-Bk-n3D"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-th-mau">
-                                <rect key="frame" x="16" y="350" width="47" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="loO-Se-e3S" firstAttribute="top" secondItem="JIN-Nh-xQc" secondAttribute="bottom" constant="8" symbolic="YES" id="CK8-F0-bR7"/>
-                            <constraint firstItem="loO-Se-e3S" firstAttribute="trailing" secondItem="p6v-dg-0hC" secondAttribute="trailingMargin" id="RJp-lx-Ulo"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icons8-customer-30" id="J1h-J5-SIf">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-20"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="barThing" destination="J1h-J5-SIf" id="LiK-aT-wcr"/>
-                        <outlet property="profileImage" destination="lwt-2D-JCr" id="0cs-jV-dGx"/>
-                        <outlet property="toEditProfile" destination="d1E-EQ-1Ne" id="dek-I7-zlx"/>
-                        <outlet property="toEditProfileButton" destination="d1E-EQ-1Ne" id="Q6c-YY-cdy"/>
+                        <outlet property="barThing" destination="J1h-J5-SIf" id="Vyi-jj-wGa"/>
                         <segue destination="AYP-sR-U70" kind="show" identifier="toEditProfileViewController" id="aaC-KH-3eU"/>
                         <segue destination="xUc-pV-PfM" kind="show" id="OCd-O6-RLU"/>
                     </connections>
@@ -371,6 +335,13 @@
                     <view key="view" contentMode="scaleToFill" id="GLo-dV-Cil">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-MN-2Ps">
+                                <rect key="frame" x="130" y="318" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icons8-chat-room-30" id="3IX-rK-waA"/>
@@ -563,12 +534,11 @@
     <resources>
         <image name="icons8-chat-room-30" width="22.5" height="22.5"/>
         <image name="icons8-customer-30" width="30" height="30"/>
-        <image name="icons8-settings-filled-50" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SaJ-0G-aLH"/>
         <segue reference="VPM-wj-rJa"/>
-        <segue reference="qHO-1Z-nlI"/>
+        <segue reference="V1X-OJ-i18"/>
         <segue reference="y0C-pO-438"/>
     </inferredMetricsTieBreakers>
 </document>
