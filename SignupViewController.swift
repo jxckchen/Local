@@ -13,7 +13,8 @@ import Firebase
 
 class SignupViewController: UIViewController{
     
-    let databaseRef = Database.database().reference(fromURL: "https://local-cbfe9.firebaseio.com/")
+    let databaseRef = Database.database().reference()
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -57,18 +58,15 @@ class SignupViewController: UIViewController{
         else{
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!){ (user, error) in
                 if error == nil {
-                    guard let uid = user?.uid else {
-                        return
-                    }
-                    let userReference = self.databaseRef.child("users").child(uid)
-                    let values = ["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "pic": ""]
-                    userReference.updateChildValues(values, withCompletionBlock: { (error, ref) in
-                        if error != nil {
-                            print(error!)
-                            return
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    if self.usernameTextField.text != "" {
+                        changeRequest?.displayName = self.usernameTextField.text
+                        changeRequest?.commitChanges { error in
+                            if error == nil {
+                                print("we chillin")
+                            }
                         }
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                    }
                     self.performSegue(withIdentifier: "signupToHome", sender: self)
                 }
                 else{
@@ -79,6 +77,7 @@ class SignupViewController: UIViewController{
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
+            
         }
     }
     

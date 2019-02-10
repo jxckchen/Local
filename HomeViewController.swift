@@ -13,17 +13,30 @@ import Firebase
 class HomeViewController: UIViewController{
 
     @IBOutlet weak var barThing: UITabBarItem!
-    
-    let storageRef = Storage.storage().reference()
-    let databaseRef = Database.database().reference()
+    var imagePicker:UIImagePickerController!
+    @IBOutlet weak var profileImagePicker: UIImageView!
     
     override func viewDidLoad() {
         barThing.title = nil
         barThing.imageInsets = UIEdgeInsets(top: 6,left:0,bottom: -6,right: 0)
         setBackgroundGrey()
         self.tabBarController?.tabBar.barTintColor = UIColor.black
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+        profileImagePicker.isUserInteractionEnabled = true
+        profileImagePicker.addGestureRecognizer(imageTap)
+        profileImagePicker.layer.cornerRadius = profileImagePicker.bounds.height/2
+        profileImagePicker.clipsToBounds = true
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
     }
     
+    @objc func openImagePicker(_ sender:Any) {
+        self.present(imagePicker, animated: true, completion: nil)
+    }
     
     @IBAction func logout(_ sender: Any) {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
@@ -46,6 +59,45 @@ class HomeViewController: UIViewController{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initial = storyboard.instantiateInitialViewController()
         UIApplication.shared.keyWindow?.rootViewController = initial
+    }
+    
+    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:String?)->())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        guard let imageData = UIImage.jpegData() else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "img/jpg"
+        
+        storageRef.putData(imageData, metadata: metaData) {metaData, error in
+            if error == nil, metaData != nil {
+                if let url = metaData?.downloadURL()?.absoluteString {
+                    completion(url)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+}
+
+
+
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.profileImagePicker.image = pickedImage
+            self.uploadProfileImage(<#T##image: UIImage##UIImage#>, completion: <#T##((String?) -> ())##((String?) -> ())##(String?) -> ()#>)
+            
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
     }
     
 }

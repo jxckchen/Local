@@ -244,6 +244,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="icons8-settings-filled-50"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnU-lW-tu1">
+                                <rect key="frame" x="67" y="124" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -252,6 +257,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="barThing" destination="J1h-J5-SIf" id="Vyi-jj-wGa"/>
+                        <outlet property="profileImagePicker" destination="wnU-lW-tu1" id="mW4-aR-4Ah"/>
                         <segue destination="AYP-sR-U70" kind="show" identifier="toEditProfileViewController" id="aaC-KH-3eU"/>
                         <segue destination="xUc-pV-PfM" kind="show" id="OCd-O6-RLU"/>
                     </connections>
@@ -546,9 +552,9 @@
         <image name="icons8-settings-filled-50" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SaJ-0G-aLH"/>
-        <segue reference="VPM-wj-rJa"/>
+        <segue reference="EW2-c2-zxz"/>
+        <segue reference="YDr-hC-P3M"/>
         <segue reference="V1X-OJ-i18"/>
-        <segue reference="y0C-pO-438"/>
+        <segue reference="Pcj-DT-wdT"/>
     </inferredMetricsTieBreakers>
 </document>
