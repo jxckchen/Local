@@ -15,6 +15,8 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var barThing: UITabBarItem!
     var imagePicker:UIImagePickerController!
     @IBOutlet weak var profileImagePicker: UIImageView!
+    @IBOutlet weak var usernameDisplayLabel: UILabel!
+    
     
     override func viewDidLoad() {
         barThing.title = nil
@@ -32,6 +34,8 @@ class HomeViewController: UIViewController{
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
+        
+        usernameDisplayLabel.text = Auth.auth().currentUser?.displayName
     }
     
     @objc func openImagePicker(_ sender:Any) {
@@ -61,16 +65,16 @@ class HomeViewController: UIViewController{
         UIApplication.shared.keyWindow?.rootViewController = initial
     }
     
-    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:String?)->())) {
+    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let storageRef = Storage.storage().reference().child("user/\(uid)")
-        guard let imageData = UIImage.jpegData() else { return }
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "img/jpg"
-        
+
         storageRef.putData(imageData, metadata: metaData) {metaData, error in
             if error == nil, metaData != nil {
-                if let url = metaData?.downloadURL()?.absoluteString {
+                if let url = metaData?.downloadURL() {
                     completion(url)
                 } else {
                     completion(nil)
@@ -81,9 +85,18 @@ class HomeViewController: UIViewController{
         }
     }
     
+    func saveProfileImage(profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let databaseRef = Database.database().reference().child("users/profile\(uid)")
+        let userObject = [
+            "photoURL": profileImageURL.absoluteString
+        ] as [String:Any]
+        databaseRef.setValue(userObject) {error, ref in
+            completion(error == nil)
+        }
+    }
+    
 }
-
-
 
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -93,7 +106,26 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.profileImagePicker.image = pickedImage
-            self.uploadProfileImage(<#T##image: UIImage##UIImage#>, completion: <#T##((String?) -> ())##((String?) -> ())##(String?) -> ()#>)
+            
+            self.uploadProfileImage(profileImagePicker.image!) { url in
+                if url != nil {
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.photoURL = url
+                    
+                    changeRequest?.commitChanges { error in
+                        if error == nil {
+                            self.saveProfileImage(profileImageURL: url!) {success in
+                                if success{
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                            print("we chillin")
+                        }
+                    }
+                }
+                
+                
+            }
             
         }
         
