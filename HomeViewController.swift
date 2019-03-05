@@ -12,37 +12,49 @@ import Firebase
 
 class HomeViewController: UIViewController{
 
+    //Outlets and variables
     @IBOutlet weak var barThing: UITabBarItem!
     var imagePicker:UIImagePickerController!
     @IBOutlet weak var profileImagePicker: UIImageView!
     @IBOutlet weak var usernameDisplayLabel: UILabel!
-    
+    @IBOutlet weak var settingsCog: UIButton!
     
     override func viewDidLoad() {
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+        
+        //Visual attributes
         barThing.title = nil
         barThing.imageInsets = UIEdgeInsets(top: 6,left:0,bottom: -6,right: 0)
         setBackgroundGrey()
         self.tabBarController?.tabBar.barTintColor = UIColor.black
-        
-        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         profileImagePicker.isUserInteractionEnabled = true
         profileImagePicker.addGestureRecognizer(imageTap)
         profileImagePicker.layer.cornerRadius = profileImagePicker.bounds.height/2
         profileImagePicker.clipsToBounds = true
         
+        //Settings for imagePicker
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         
+        //Show username
         usernameDisplayLabel.text = Auth.auth().currentUser?.displayName
+        
+        settingsCog.tintColor = .red
+        
     }
     
+    @IBAction func goToSettings(_ sender: Any) {
+        performSegue(withIdentifier: "profileToSettingsSegue", sender: self)
+    }
     @objc func openImagePicker(_ sender:Any) {
         self.present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func logout(_ sender: Any) {
+        //Log out confirmation
         let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         self.present(alertController, animated: true, completion: nil)
@@ -65,6 +77,7 @@ class HomeViewController: UIViewController{
         UIApplication.shared.keyWindow?.rootViewController = initial
     }
     
+    //Uploads photo to Firebase storage
     func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let storageRef = Storage.storage().reference().child("user/\(uid)")
@@ -85,6 +98,7 @@ class HomeViewController: UIViewController{
         }
     }
     
+    //Saves photo to Firebase storage
     func saveProfileImage(profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let databaseRef = Database.database().reference().child("users/profile\(uid)")
@@ -98,6 +112,7 @@ class HomeViewController: UIViewController{
     
 }
 
+//Handles everything with the image picker
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
@@ -107,11 +122,11 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.profileImagePicker.image = pickedImage
             
+            //uploads the image after confirming
             self.uploadProfileImage(profileImagePicker.image!) { url in
                 if url != nil {
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.photoURL = url
-                    
                     changeRequest?.commitChanges { error in
                         if error == nil {
                             self.saveProfileImage(profileImageURL: url!) {success in
@@ -119,16 +134,12 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
                                     self.dismiss(animated: true, completion: nil)
                                 }
                             }
-                            print("we chillin")
+                            print("Image uploaded")
                         }
                     }
                 }
-                
-                
             }
-            
         }
-        
         picker.dismiss(animated: true, completion: nil)
     }
     

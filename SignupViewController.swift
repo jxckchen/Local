@@ -13,8 +13,8 @@ import Firebase
 
 class SignupViewController: UIViewController{
     
+    //Outlets and variables
     let databaseRef = Database.database().reference()
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,6 +23,8 @@ class SignupViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Visual attributes
         self.setCustomBackgroundImage()
         signupButton.layer.cornerRadius = 5
         signupButton.layer.borderWidth = 1
@@ -38,9 +40,7 @@ class SignupViewController: UIViewController{
         confirmPasswordTextField.layer.borderWidth = 1
         confirmPasswordTextField.layer.cornerRadius = 5
         confirmPasswordTextField.layer.borderColor = UIColor.white.cgColor
-        
         usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        
         emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "confirm password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -49,6 +49,7 @@ class SignupViewController: UIViewController{
     @IBAction func signUpAction(_ sender: Any) {
         
         if passwordTextField.text != confirmPasswordTextField.text {
+            //Alert if your password is wrong
             let alertController = UIAlertController(title: "Password Incorrect", message: "Please re-type password", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
@@ -58,12 +59,13 @@ class SignupViewController: UIViewController{
         else{
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!){ (user, error) in
                 if error == nil {
+                    //Change username
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     if self.usernameTextField.text != "" {
                         changeRequest?.displayName = self.usernameTextField.text
                         changeRequest?.commitChanges { error in
                             if error == nil {
-                                print("we chillin")
+                                print("Username changed")
                             }
                         }
                     }

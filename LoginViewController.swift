@@ -12,7 +12,7 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
-    
+    //Outlets and variables
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -20,7 +20,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setCustomBackgroundImage()
+        
+        //Visual attributes
         loginButton.layer.cornerRadius = 5
         loginButton.layer.borderWidth = 1
         emailTextField.layer.borderWidth = 1
