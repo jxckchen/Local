@@ -21,6 +21,7 @@ class HomeViewController: UIViewController{
     
     override func viewDidLoad() {
         
+        guard let userProfile = UserService.currentUserProfile else { return }
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         
         //Visual attributes
@@ -40,7 +41,8 @@ class HomeViewController: UIViewController{
         imagePicker.delegate = self
         
         //Show username
-        usernameDisplayLabel.text = Auth.auth().currentUser?.displayName
+        usernameDisplayLabel.text = userProfile.username
+        //profileImagePicker.image = userProfile?.photoURL
         
         settingsCog.tintColor = .red
         
