@@ -17,14 +17,10 @@ class UserService {
         
         userRef.observe(.value, with: { snapshot in
             var userProfile:UserProfile?
-            
-            if let dict = snapshot.value as? [String:Any],
-                let username = dict["username"] as? String,
-                let photoURL = dict["photoURL"] as? String,
-                let url = URL(string:photoURL) {
-                userProfile = UserProfile(uid: snapshot.key, username: username, photoURL: url)
+            if let dict = snapshot.value as? NSDictionary,
+                let username = dict["username"] as? String {
+                userProfile = UserProfile(uid: snapshot.key, username: username)
             }
-            
             completion(userProfile)
         })
     }

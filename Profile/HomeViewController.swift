@@ -19,9 +19,10 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var usernameDisplayLabel: UILabel!
     @IBOutlet weak var settingsCog: UIButton!
     
+    
     override func viewDidLoad() {
         
-        guard let userProfile = UserService.currentUserProfile else { return }
+        
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         
         //Visual attributes
@@ -40,11 +41,25 @@ class HomeViewController: UIViewController{
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         
-        //Show username
-        usernameDisplayLabel.text = userProfile.username
-        //profileImagePicker.image = userProfile?.photoURL
-        
         settingsCog.tintColor = .red
+        
+        
+        let currentUserProfile = UserService.currentUserProfile
+        print(currentUserProfile?.uid)
+        //usernameDisplayLabel.text = userProfile?.username
+        
+        
+//        let userObject = [
+//            "uid": userProfile!.uid,
+//            "username": userProfile?.username,
+//            "photoURL": userProfile?.photoURL.absoluteString
+//        ] as [String:Any]
+//        //Show username
+        
+        
+        //ImageService.getImage(withURL: <#T##URL#>, completion: <#T##(UIImage?) -> ()#>)
+        
+        
         
     }
     

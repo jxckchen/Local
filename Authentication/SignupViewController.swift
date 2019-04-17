@@ -44,6 +44,8 @@ class SignupViewController: UIViewController{
         emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "confirm password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        
     }
     
     @IBAction func signUpAction(_ sender: Any) {
@@ -68,6 +70,19 @@ class SignupViewController: UIViewController{
                                 print("Username changed")
                             }
                         }
+                        guard let uid = Auth.auth().currentUser?.uid else { return }
+                        let databaseRef = Database.database().reference().child("users/profile/\(uid)")
+                        let userObject = [
+                            "username": self.usernameTextField.text as Any
+                            ] as [String:Any]
+                        databaseRef.setValue(userObject)
+                        print("hello" + uid)
+                        UserService.observeUserProfile(uid) { userProfile in
+                        UserService.currentUserProfile = userProfile
+                            print("no nil")
+                            print(userProfile?.username)
+                        }
+                        //print(.username)
                     }
                     self.performSegue(withIdentifier: "signupToHome", sender: self)
                 }
