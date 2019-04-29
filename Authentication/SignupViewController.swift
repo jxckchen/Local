@@ -79,10 +79,8 @@ class SignupViewController: UIViewController{
                         print("hello" + uid)
                         UserService.observeUserProfile(uid) { userProfile in
                         UserService.currentUserProfile = userProfile
-                            print("no nil")
                             print(userProfile?.username)
                         }
-                        //print(.username)
                     }
                     self.performSegue(withIdentifier: "signupToHome", sender: self)
                 }

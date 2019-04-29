@@ -43,22 +43,14 @@ class HomeViewController: UIViewController{
         
         settingsCog.tintColor = .red
         
-        
         let currentUserProfile = UserService.currentUserProfile
-        print(currentUserProfile?.uid)
-        //usernameDisplayLabel.text = userProfile?.username
-        
-        
-//        let userObject = [
-//            "uid": userProfile!.uid,
-//            "username": userProfile?.username,
-//            "photoURL": userProfile?.photoURL.absoluteString
-//        ] as [String:Any]
-//        //Show username
-        
-        
-        //ImageService.getImage(withURL: <#T##URL#>, completion: <#T##(UIImage?) -> ()#>)
-        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let databaseRef = Database.database().reference().child("users/profile/\(uid)")
+        UserService.observeUserProfile(uid) { userProfile in
+            UserService.currentUserProfile = userProfile
+            print(userProfile?.username)
+            self.usernameDisplayLabel.text = userProfile?.username
+        }
         
         
     }
@@ -95,25 +87,25 @@ class HomeViewController: UIViewController{
     }
     
     //Uploads photo to Firebase storage
-    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(uid)")
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
-        let metaData = StorageMetadata()
-        metaData.contentType = "img/jpg"
-
-        storageRef.putData(imageData, metadata: metaData) {metaData, error in
-            if error == nil, metaData != nil {
-                if let url = metaData?.downloadURL() {
-                    completion(url)
-                } else {
-                    completion(nil)
-                }
-            } else {
-                completion(nil)
-            }
-        }
-    }
+//    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        let storageRef = Storage.storage().reference().child("user/\(uid)")
+//        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+//        let metaData = StorageMetadata()
+//        metaData.contentType = "img/jpg"
+//
+//        storageRef.putData(imageData, metadata: metaData) {metaData, error in
+//            if error == nil, metaData != nil {
+//                if let url = metaData?.downloadURL() {
+//                    completion(url)
+//                } else {
+//                    completion(nil)
+//                }
+//            } else {
+//                completion(nil)
+//            }
+//        }
+//    }
     
     //Saves photo to Firebase storage
     func saveProfileImage(profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
@@ -135,29 +127,29 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.profileImagePicker.image = pickedImage
-            
-            //uploads the image after confirming
-            self.uploadProfileImage(profileImagePicker.image!) { url in
-                if url != nil {
-                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                    changeRequest?.photoURL = url
-                    changeRequest?.commitChanges { error in
-                        if error == nil {
-                            self.saveProfileImage(profileImageURL: url!) {success in
-                                if success{
-                                    self.dismiss(animated: true, completion: nil)
-                                }
-                            }
-                            print("Image uploaded")
-                        }
-                    }
-                }
-            }
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+//            self.profileImagePicker.image = pickedImage
+//            
+//            //uploads the image after confirming
+//            self.uploadProfileImage(profileImagePicker.image!) { url in
+//                if url != nil {
+//                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+//                    changeRequest?.photoURL = url
+//                    changeRequest?.commitChanges { error in
+//                        if error == nil {
+//                            self.saveProfileImage(profileImageURL: url!) {success in
+//                                if success{
+//                                    self.dismiss(animated: true, completion: nil)
+//                                }
+//                            }
+//                            print("Image uploaded")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        picker.dismiss(animated: true, completion: nil)
+//    }
     
 }
